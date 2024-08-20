@@ -102,6 +102,17 @@
 		71BF64022C74F77B00A592A4 /* WallpaperApp */ = {
 			isa = PBXGroup;
 			children = (
+				71BF64412C753DA800A592A4 /* Network */,
+				71BF64402C753DA000A592A4 /* Utils */,
+				71BF643F2C753D9700A592A4 /* ViewModels */,
+				71BF643E2C753D8A00A592A4 /* Theme */,
+				71BF643D2C753D8100A592A4 /* Coordinator */,
+				71BF643C2C753D3000A592A4 /* Helpers */,
+				71BF643B2C753D2800A592A4 /* Components */,
+				71BF643A2C753D1B00A592A4 /* Storage */,
+				71BF64392C753D0C00A592A4 /* Models */,
+				71BF64382C753D0800A592A4 /* Views */,
+				71BF64372C753D0300A592A4 /* Controllers */,
 				71BF64032C74F77B00A592A4 /* AppDelegate.swift */,
 				71BF64052C74F77B00A592A4 /* SceneDelegate.swift */,
 				71BF64072C74F77B00A592A4 /* ViewController.swift */,
@@ -130,6 +141,83 @@
 				71BF642A2C74F77C00A592A4 /* WallpaperAppUITestsLaunchTests.swift */,
 			);
 			path = WallpaperAppUITests;
+			sourceTree = "<group>";
+		};
+		71BF64372C753D0300A592A4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		71BF64382C753D0800A592A4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		71BF64392C753D0C00A592A4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		71BF643A2C753D1B00A592A4 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		71BF643B2C753D2800A592A4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		71BF643C2C753D3000A592A4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		71BF643D2C753D8100A592A4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		71BF643E2C753D8A00A592A4 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		71BF643F2C753D9700A592A4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		71BF64402C753DA000A592A4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		71BF64412C753DA800A592A4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
