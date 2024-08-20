@@ -17,6 +17,7 @@
 		71BF641F2C74F77C00A592A4 /* WallpaperAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF641E2C74F77C00A592A4 /* WallpaperAppTests.swift */; };
 		71BF64292C74F77C00A592A4 /* WallpaperAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64282C74F77C00A592A4 /* WallpaperAppUITests.swift */; };
 		71BF642B2C74F77C00A592A4 /* WallpaperAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF642A2C74F77C00A592A4 /* WallpaperAppUITestsLaunchTests.swift */; };
+		71BF64432C75517E00A592A4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64422C75517E00A592A4 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		71BF64242C74F77C00A592A4 /* WallpaperAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallpaperAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BF64282C74F77C00A592A4 /* WallpaperAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperAppUITests.swift; sourceTree = "<group>"; };
 		71BF642A2C74F77C00A592A4 /* WallpaperAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		71BF64422C75517E00A592A4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 		71BF643E2C753D8A00A592A4 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				71BF64422C75517E00A592A4 /* Theme.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			files = (
 				71BF64082C74F77B00A592A4 /* ViewController.swift in Sources */,
 				71BF64042C74F77B00A592A4 /* AppDelegate.swift in Sources */,
+				71BF64432C75517E00A592A4 /* Theme.swift in Sources */,
 				71BF640E2C74F77B00A592A4 /* WallpaperApp.xcdatamodeld in Sources */,
 				71BF64062C74F77B00A592A4 /* SceneDelegate.swift in Sources */,
 			);
@@ -545,6 +549,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -574,6 +579,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
