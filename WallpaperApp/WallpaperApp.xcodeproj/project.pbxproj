@@ -10,7 +10,6 @@
 		71BF64042C74F77B00A592A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64032C74F77B00A592A4 /* AppDelegate.swift */; };
 		71BF64062C74F77B00A592A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64052C74F77B00A592A4 /* SceneDelegate.swift */; };
 		71BF64082C74F77B00A592A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64072C74F77B00A592A4 /* ViewController.swift */; };
-		71BF640B2C74F77B00A592A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71BF64092C74F77B00A592A4 /* Main.storyboard */; };
 		71BF640E2C74F77B00A592A4 /* WallpaperApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71BF640C2C74F77B00A592A4 /* WallpaperApp.xcdatamodeld */; };
 		71BF64102C74F77B00A592A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71BF640F2C74F77B00A592A4 /* Assets.xcassets */; };
 		71BF64132C74F77B00A592A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71BF64112C74F77B00A592A4 /* LaunchScreen.storyboard */; };
@@ -18,6 +17,16 @@
 		71BF64292C74F77C00A592A4 /* WallpaperAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64282C74F77C00A592A4 /* WallpaperAppUITests.swift */; };
 		71BF642B2C74F77C00A592A4 /* WallpaperAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF642A2C74F77C00A592A4 /* WallpaperAppUITestsLaunchTests.swift */; };
 		71BF64432C75517E00A592A4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64422C75517E00A592A4 /* Theme.swift */; };
+		71BF64452C75543300A592A4 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64442C75543300A592A4 /* UserStorage.swift */; };
+		71BF64472C75571D00A592A4 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64462C75571D00A592A4 /* APIConstants.swift */; };
+		71BF64492C75579B00A592A4 /* APICallerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64482C75579B00A592A4 /* APICallerProtocol.swift */; };
+		71BF644B2C75580D00A592A4 /* WallpaperListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF644A2C75580D00A592A4 /* WallpaperListResponse.swift */; };
+		71BF644D2C75588600A592A4 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF644C2C75588600A592A4 /* APICaller.swift */; };
+		71BF644F2C775CD800A592A4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF644E2C775CD800A592A4 /* HomeViewController.swift */; };
+		71BF64512C77A9B400A592A4 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64502C77A9B400A592A4 /* PinterestLayout.swift */; };
+		71BF64542C77BDB300A592A4 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64532C77BDB300A592A4 /* UITableView+Extensions.swift */; };
+		71BF64562C77BDD100A592A4 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64552C77BDD100A592A4 /* UICollectionView+Extensions.swift */; };
+		71BF645A2C77BED300A592A4 /* ImageListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64592C77BED300A592A4 /* ImageListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +51,6 @@
 		71BF64032C74F77B00A592A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71BF64052C74F77B00A592A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		71BF64072C74F77B00A592A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		71BF640A2C74F77B00A592A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		71BF640D2C74F77B00A592A4 /* WallpaperApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WallpaperApp.xcdatamodel; sourceTree = "<group>"; };
 		71BF640F2C74F77B00A592A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71BF64122C74F77B00A592A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +62,16 @@
 		71BF64282C74F77C00A592A4 /* WallpaperAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperAppUITests.swift; sourceTree = "<group>"; };
 		71BF642A2C74F77C00A592A4 /* WallpaperAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		71BF64422C75517E00A592A4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		71BF64442C75543300A592A4 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		71BF64462C75571D00A592A4 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		71BF64482C75579B00A592A4 /* APICallerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallerProtocol.swift; sourceTree = "<group>"; };
+		71BF644A2C75580D00A592A4 /* WallpaperListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperListResponse.swift; sourceTree = "<group>"; };
+		71BF644C2C75588600A592A4 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		71BF644E2C775CD800A592A4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		71BF64502C77A9B400A592A4 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
+		71BF64532C77BDB300A592A4 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		71BF64552C77BDD100A592A4 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		71BF64592C77BED300A592A4 /* ImageListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,21 +122,21 @@
 		71BF64022C74F77B00A592A4 /* WallpaperApp */ = {
 			isa = PBXGroup;
 			children = (
+				71BF64522C77BD8900A592A4 /* Extensions */,
+				71BF643A2C753D1B00A592A4 /* Storage */,
+				71BF643E2C753D8A00A592A4 /* Theme */,
 				71BF64412C753DA800A592A4 /* Network */,
 				71BF64402C753DA000A592A4 /* Utils */,
 				71BF643F2C753D9700A592A4 /* ViewModels */,
-				71BF643E2C753D8A00A592A4 /* Theme */,
 				71BF643D2C753D8100A592A4 /* Coordinator */,
 				71BF643C2C753D3000A592A4 /* Helpers */,
 				71BF643B2C753D2800A592A4 /* Components */,
-				71BF643A2C753D1B00A592A4 /* Storage */,
 				71BF64392C753D0C00A592A4 /* Models */,
 				71BF64382C753D0800A592A4 /* Views */,
 				71BF64372C753D0300A592A4 /* Controllers */,
 				71BF64032C74F77B00A592A4 /* AppDelegate.swift */,
 				71BF64052C74F77B00A592A4 /* SceneDelegate.swift */,
 				71BF64072C74F77B00A592A4 /* ViewController.swift */,
-				71BF64092C74F77B00A592A4 /* Main.storyboard */,
 				71BF640F2C74F77B00A592A4 /* Assets.xcassets */,
 				71BF64112C74F77B00A592A4 /* LaunchScreen.storyboard */,
 				71BF64142C74F77B00A592A4 /* WallpaperApp.entitlements */,
@@ -148,6 +166,7 @@
 		71BF64372C753D0300A592A4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				71BF645F2C77DADB00A592A4 /* Core */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -155,6 +174,8 @@
 		71BF64382C753D0800A592A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				71BF64582C77BEA700A592A4 /* ImageListCollectionViewCell */,
+				71BF64572C77BE9000A592A4 /* UICollectionView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -162,6 +183,7 @@
 		71BF64392C753D0C00A592A4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				71BF644A2C75580D00A592A4 /* WallpaperListResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +191,7 @@
 		71BF643A2C753D1B00A592A4 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				71BF64442C75543300A592A4 /* UserStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -219,8 +242,44 @@
 		71BF64412C753DA800A592A4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				71BF64462C75571D00A592A4 /* APIConstants.swift */,
+				71BF64482C75579B00A592A4 /* APICallerProtocol.swift */,
+				71BF644C2C75588600A592A4 /* APICaller.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		71BF64522C77BD8900A592A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				71BF64532C77BDB300A592A4 /* UITableView+Extensions.swift */,
+				71BF64552C77BDD100A592A4 /* UICollectionView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		71BF64572C77BE9000A592A4 /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				71BF64502C77A9B400A592A4 /* PinterestLayout.swift */,
+			);
+			path = UICollectionView;
+			sourceTree = "<group>";
+		};
+		71BF64582C77BEA700A592A4 /* ImageListCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				71BF64592C77BED300A592A4 /* ImageListCollectionViewCell.swift */,
+			);
+			path = ImageListCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		71BF645F2C77DADB00A592A4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				71BF644E2C775CD800A592A4 /* HomeViewController.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,7 +388,6 @@
 			files = (
 				71BF64132C74F77B00A592A4 /* LaunchScreen.storyboard in Resources */,
 				71BF64102C74F77B00A592A4 /* Assets.xcassets in Resources */,
-				71BF640B2C74F77B00A592A4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,8 +412,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71BF64562C77BDD100A592A4 /* UICollectionView+Extensions.swift in Sources */,
+				71BF64512C77A9B400A592A4 /* PinterestLayout.swift in Sources */,
+				71BF644B2C75580D00A592A4 /* WallpaperListResponse.swift in Sources */,
 				71BF64082C74F77B00A592A4 /* ViewController.swift in Sources */,
+				71BF64492C75579B00A592A4 /* APICallerProtocol.swift in Sources */,
+				71BF644D2C75588600A592A4 /* APICaller.swift in Sources */,
+				71BF645A2C77BED300A592A4 /* ImageListCollectionViewCell.swift in Sources */,
 				71BF64042C74F77B00A592A4 /* AppDelegate.swift in Sources */,
+				71BF64452C75543300A592A4 /* UserStorage.swift in Sources */,
+				71BF64472C75571D00A592A4 /* APIConstants.swift in Sources */,
+				71BF64542C77BDB300A592A4 /* UITableView+Extensions.swift in Sources */,
+				71BF644F2C775CD800A592A4 /* HomeViewController.swift in Sources */,
 				71BF64432C75517E00A592A4 /* Theme.swift in Sources */,
 				71BF640E2C74F77B00A592A4 /* WallpaperApp.xcdatamodeld in Sources */,
 				71BF64062C74F77B00A592A4 /* SceneDelegate.swift in Sources */,
@@ -395,14 +463,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		71BF64092C74F77B00A592A4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				71BF640A2C74F77B00A592A4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		71BF64112C74F77B00A592A4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -546,7 +606,6 @@
 				INFOPLIST_FILE = WallpaperApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -576,7 +635,6 @@
 				INFOPLIST_FILE = WallpaperApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
