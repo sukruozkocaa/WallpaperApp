@@ -27,6 +27,7 @@
 		71BF64542C77BDB300A592A4 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64532C77BDB300A592A4 /* UITableView+Extensions.swift */; };
 		71BF64562C77BDD100A592A4 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64552C77BDD100A592A4 /* UICollectionView+Extensions.swift */; };
 		71BF645A2C77BED300A592A4 /* ImageListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64592C77BED300A592A4 /* ImageListCollectionViewCell.swift */; };
+		71BF64622C77DC8200A592A4 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64612C77DC8200A592A4 /* ImageCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		71BF64532C77BDB300A592A4 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		71BF64552C77BDD100A592A4 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		71BF64592C77BED300A592A4 /* ImageListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCollectionViewCell.swift; sourceTree = "<group>"; };
+		71BF64612C77DC8200A592A4 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 		71BF643B2C753D2800A592A4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				71BF64602C77DC7900A592A4 /* ImageCardView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -280,6 +283,14 @@
 				71BF644E2C775CD800A592A4 /* HomeViewController.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		71BF64602C77DC7900A592A4 /* ImageCardView */ = {
+			isa = PBXGroup;
+			children = (
+				71BF64612C77DC8200A592A4 /* ImageCardView.swift */,
+			);
+			path = ImageCardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,6 +429,7 @@
 				71BF64082C74F77B00A592A4 /* ViewController.swift in Sources */,
 				71BF64492C75579B00A592A4 /* APICallerProtocol.swift in Sources */,
 				71BF644D2C75588600A592A4 /* APICaller.swift in Sources */,
+				71BF64622C77DC8200A592A4 /* ImageCardView.swift in Sources */,
 				71BF645A2C77BED300A592A4 /* ImageListCollectionViewCell.swift in Sources */,
 				71BF64042C74F77B00A592A4 /* AppDelegate.swift in Sources */,
 				71BF64452C75543300A592A4 /* UserStorage.swift in Sources */,
