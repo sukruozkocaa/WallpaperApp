@@ -10,8 +10,10 @@ import UIKit
 // MARK: - ImageListCollectionViewCell
 final class ImageListCollectionViewCell: UICollectionViewCell {
     
-    private lazy var imageCardView: ImageCardView = {
+    // MARK: - Views
+    lazy var imageCardView: ImageCardView = {
         let view = ImageCardView()
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -19,7 +21,8 @@ final class ImageListCollectionViewCell: UICollectionViewCell {
     // MARK: - Override Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = Theme.Color.black
+        backgroundColor = .clear
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
@@ -40,5 +43,13 @@ private extension ImageListCollectionViewCell {
             imageCardView.widthAnchor.constraint(equalTo: widthAnchor),
             imageCardView.heightAnchor.constraint(equalTo: heightAnchor)
         ])
+    }
+}
+
+// MARK: - Configure
+extension ImageListCollectionViewCell {
+    final func configure(item: Photo) {
+        imageCardView.setImage(with: item.src?.original)
+        imageCardView.configureBottomBannerView(iconImage: UIImage(named: "icPencilVector"), titleText: item.photographer)
     }
 }

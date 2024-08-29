@@ -6,6 +6,11 @@
 //
 
 import Foundation
+import Alamofire
+
+enum APIError: Error {
+    case failedToGetData
+}
 
 // MARK: - APICaller
 struct APICaller: APICallerProtocol {
@@ -17,8 +22,46 @@ struct APICaller: APICallerProtocol {
     init() {}
 
     // MARK: - Fetch Data
-    func apiCaller(fetchData _completion: @escaping (Result<WallpaperListResponse, Error>) -> Void) {
-        let urlString = "\(APIConstants.baseAPIURL)/list/all"
-        // REQUEST
+    func apiCallerForSearch(categoryType: CategoryTypes?, page: Int, completion: @escaping (Result<PexelsResponse, Error>) -> Void) {
+        let urlString = "\(APIConstants.baseAPIURL)search?query=\(categoryType?.rawValue ?? "")&per_page=20"
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+                
+        let headers: HTTPHeaders = [
+            "Authorization": APIConstants.API_KEY
+        ]
+          
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: PexelsResponse.self) { response in
+            switch response.result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
+    
+    func apiCallerCategoryList(categoryType cateyoryType: CategoryTypes, completion: @escaping (Result<PexelsResponse, Error>) -> Void) {
+        let urlString = "\(APIConstants.baseAPIURL)search?query=\(cateyoryType.rawValue)&per_page=1"
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+                
+        let headers: HTTPHeaders = [
+            "Authorization": APIConstants.API_KEY
+        ]
+          
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: PexelsResponse.self) { response in
+            switch response.result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
 }

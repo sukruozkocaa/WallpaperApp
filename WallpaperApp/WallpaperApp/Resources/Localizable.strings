@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  WallpaperApp
+
+  Created by Şükrü on 27.08.2024.
+  
+*/
+
+// MARK: - HomeViewController
+"Home_page_navigation_title" = "Anasayfa";

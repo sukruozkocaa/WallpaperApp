@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		712C05DE2C7E496B00490C8C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 712C05DD2C7E496B00490C8C /* Localizable.strings */; };
+		712C05E52C7E56C200490C8C /* ZoomAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C05E12C7E56C200490C8C /* ZoomAnimatedTransitioning.swift */; };
+		712C05E72C7E56C200490C8C /* ZoomTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C05E32C7E56C200490C8C /* ZoomTransitioner.swift */; };
+		712C05E82C7E56C200490C8C /* ZoomTransitionVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C05E42C7E56C200490C8C /* ZoomTransitionVCExtension.swift */; };
+		712C05EB2C7E62C400490C8C /* SwipeBackPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C05EA2C7E62C400490C8C /* SwipeBackPresentationController.swift */; };
+		713027582C7FB6E900CA74F8 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713027572C7FB6E900CA74F8 /* UIColor+Extensions.swift */; };
+		7130275A2C7FBA6400CA74F8 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713027592C7FBA6400CA74F8 /* CategoryListViewController.swift */; };
+		7130275C2C7FBE4800CA74F8 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130275B2C7FBE4800CA74F8 /* CategoryViewModel.swift */; };
+		7130275F2C7FC48D00CA74F8 /* CategoryListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130275E2C7FC48D00CA74F8 /* CategoryListCollectionViewCell.swift */; };
+		71339B9C2C7D0CAD00396422 /* ImageBottomBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71339B9B2C7D0CAD00396422 /* ImageBottomBannerView.swift */; };
+		71339B9E2C7D10DF00396422 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71339B9D2C7D10DF00396422 /* ImageDetailViewController.swift */; };
+		717B7B462C7BDB0B0095ED8A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 717B7B452C7BDB0B0095ED8A /* Alamofire */; };
+		717B7B482C7BDB0B0095ED8A /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 717B7B472C7BDB0B0095ED8A /* AlamofireDynamic */; };
 		71BF64042C74F77B00A592A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64032C74F77B00A592A4 /* AppDelegate.swift */; };
 		71BF64062C74F77B00A592A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64052C74F77B00A592A4 /* SceneDelegate.swift */; };
 		71BF64082C74F77B00A592A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64072C74F77B00A592A4 /* ViewController.swift */; };
@@ -28,6 +41,11 @@
 		71BF64562C77BDD100A592A4 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64552C77BDD100A592A4 /* UICollectionView+Extensions.swift */; };
 		71BF645A2C77BED300A592A4 /* ImageListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64592C77BED300A592A4 /* ImageListCollectionViewCell.swift */; };
 		71BF64622C77DC8200A592A4 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64612C77DC8200A592A4 /* ImageCardView.swift */; };
+		71BF64652C7A852600A592A4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64642C7A852600A592A4 /* HomeViewModel.swift */; };
+		71BF64672C7A892400A592A4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64662C7A892400A592A4 /* Observable.swift */; };
+		71BF646A2C7A8B1700A592A4 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 71BF64692C7A8B1700A592A4 /* Kingfisher */; };
+		71BF646F2C7BAB0900A592A4 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF646E2C7BAB0900A592A4 /* UIImageView+Extensions.swift */; };
+		71BF64722C7BACFC00A592A4 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64712C7BACFC00A592A4 /* APIEndpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +66,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		712C05DD2C7E496B00490C8C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		712C05E12C7E56C200490C8C /* ZoomAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		712C05E32C7E56C200490C8C /* ZoomTransitioner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomTransitioner.swift; sourceTree = "<group>"; };
+		712C05E42C7E56C200490C8C /* ZoomTransitionVCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomTransitionVCExtension.swift; sourceTree = "<group>"; };
+		712C05EA2C7E62C400490C8C /* SwipeBackPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBackPresentationController.swift; sourceTree = "<group>"; };
+		713027572C7FB6E900CA74F8 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		713027592C7FBA6400CA74F8 /* CategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
+		7130275B2C7FBE4800CA74F8 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		7130275E2C7FC48D00CA74F8 /* CategoryListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListCollectionViewCell.swift; sourceTree = "<group>"; };
+		71339B9B2C7D0CAD00396422 /* ImageBottomBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBottomBannerView.swift; sourceTree = "<group>"; };
+		71339B9D2C7D10DF00396422 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		71BF64002C74F77B00A592A4 /* WallpaperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallpaperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BF64032C74F77B00A592A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71BF64052C74F77B00A592A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +103,10 @@
 		71BF64552C77BDD100A592A4 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		71BF64592C77BED300A592A4 /* ImageListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCollectionViewCell.swift; sourceTree = "<group>"; };
 		71BF64612C77DC8200A592A4 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
+		71BF64642C7A852600A592A4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		71BF64662C7A892400A592A4 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		71BF646E2C7BAB0900A592A4 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		71BF64712C7BACFC00A592A4 /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +114,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71BF646A2C7A8B1700A592A4 /* Kingfisher in Frameworks */,
+				717B7B482C7BDB0B0095ED8A /* AlamofireDynamic in Frameworks */,
+				717B7B462C7BDB0B0095ED8A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +137,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		712C05DC2C7E495D00490C8C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				712C05DD2C7E496B00490C8C /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		712C05E92C7E5DB000490C8C /* ZoomTransition */ = {
+			isa = PBXGroup;
+			children = (
+				712C05E12C7E56C200490C8C /* ZoomAnimatedTransitioning.swift */,
+				712C05E32C7E56C200490C8C /* ZoomTransitioner.swift */,
+				712C05E42C7E56C200490C8C /* ZoomTransitionVCExtension.swift */,
+				712C05EA2C7E62C400490C8C /* SwipeBackPresentationController.swift */,
+			);
+			path = ZoomTransition;
+			sourceTree = "<group>";
+		};
+		7130275D2C7FC46A00CA74F8 /* CategoryListCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7130275E2C7FC48D00CA74F8 /* CategoryListCollectionViewCell.swift */,
+			);
+			path = CategoryListCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		71339B9A2C7D0CA100396422 /* ImageBottomBannerView */ = {
+			isa = PBXGroup;
+			children = (
+				71339B9B2C7D0CAD00396422 /* ImageBottomBannerView.swift */,
+			);
+			path = ImageBottomBannerView;
+			sourceTree = "<group>";
+		};
 		71BF63F72C74F77B00A592A4 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +195,7 @@
 		71BF64022C74F77B00A592A4 /* WallpaperApp */ = {
 			isa = PBXGroup;
 			children = (
+				712C05DC2C7E495D00490C8C /* Resources */,
 				71BF64522C77BD8900A592A4 /* Extensions */,
 				71BF643A2C753D1B00A592A4 /* Storage */,
 				71BF643E2C753D8A00A592A4 /* Theme */,
@@ -176,6 +248,8 @@
 		71BF64382C753D0800A592A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				712C05E92C7E5DB000490C8C /* ZoomTransition */,
+				7130275D2C7FC46A00CA74F8 /* CategoryListCollectionViewCell */,
 				71BF64582C77BEA700A592A4 /* ImageListCollectionViewCell */,
 				71BF64572C77BE9000A592A4 /* UICollectionView */,
 			);
@@ -201,6 +275,7 @@
 		71BF643B2C753D2800A592A4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				71339B9A2C7D0CA100396422 /* ImageBottomBannerView */,
 				71BF64602C77DC7900A592A4 /* ImageCardView */,
 			);
 			path = Components;
@@ -231,6 +306,8 @@
 		71BF643F2C753D9700A592A4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				71BF64642C7A852600A592A4 /* HomeViewModel.swift */,
+				7130275B2C7FBE4800CA74F8 /* CategoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -238,6 +315,7 @@
 		71BF64402C753DA000A592A4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				71BF64662C7A892400A592A4 /* Observable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -248,6 +326,7 @@
 				71BF64462C75571D00A592A4 /* APIConstants.swift */,
 				71BF64482C75579B00A592A4 /* APICallerProtocol.swift */,
 				71BF644C2C75588600A592A4 /* APICaller.swift */,
+				71BF64712C7BACFC00A592A4 /* APIEndpoints.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -257,6 +336,8 @@
 			children = (
 				71BF64532C77BDB300A592A4 /* UITableView+Extensions.swift */,
 				71BF64552C77BDD100A592A4 /* UICollectionView+Extensions.swift */,
+				71BF646E2C7BAB0900A592A4 /* UIImageView+Extensions.swift */,
+				713027572C7FB6E900CA74F8 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -281,6 +362,8 @@
 			isa = PBXGroup;
 			children = (
 				71BF644E2C775CD800A592A4 /* HomeViewController.swift */,
+				71339B9D2C7D10DF00396422 /* ImageDetailViewController.swift */,
+				713027592C7FBA6400CA74F8 /* CategoryListViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -309,6 +392,11 @@
 			dependencies = (
 			);
 			name = WallpaperApp;
+			packageProductDependencies = (
+				71BF64692C7A8B1700A592A4 /* Kingfisher */,
+				717B7B452C7BDB0B0095ED8A /* Alamofire */,
+				717B7B472C7BDB0B0095ED8A /* AlamofireDynamic */,
+			);
 			productName = WallpaperApp;
 			productReference = 71BF64002C74F77B00A592A4 /* WallpaperApp.app */;
 			productType = "com.apple.product-type.application";
@@ -381,6 +469,10 @@
 				Base,
 			);
 			mainGroup = 71BF63F72C74F77B00A592A4;
+			packageReferences = (
+				71BF64682C7A8B1700A592A4 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				71BF64732C7BDA5800A592A4 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 71BF64012C74F77B00A592A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -398,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71BF64132C74F77B00A592A4 /* LaunchScreen.storyboard in Resources */,
+				712C05DE2C7E496B00490C8C /* Localizable.strings in Resources */,
 				71BF64102C74F77B00A592A4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,18 +516,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7130275F2C7FC48D00CA74F8 /* CategoryListCollectionViewCell.swift in Sources */,
+				71BF64652C7A852600A592A4 /* HomeViewModel.swift in Sources */,
 				71BF64562C77BDD100A592A4 /* UICollectionView+Extensions.swift in Sources */,
+				712C05E72C7E56C200490C8C /* ZoomTransitioner.swift in Sources */,
+				713027582C7FB6E900CA74F8 /* UIColor+Extensions.swift in Sources */,
+				712C05E82C7E56C200490C8C /* ZoomTransitionVCExtension.swift in Sources */,
 				71BF64512C77A9B400A592A4 /* PinterestLayout.swift in Sources */,
 				71BF644B2C75580D00A592A4 /* WallpaperListResponse.swift in Sources */,
+				71BF64672C7A892400A592A4 /* Observable.swift in Sources */,
+				7130275A2C7FBA6400CA74F8 /* CategoryListViewController.swift in Sources */,
+				71339B9E2C7D10DF00396422 /* ImageDetailViewController.swift in Sources */,
 				71BF64082C74F77B00A592A4 /* ViewController.swift in Sources */,
 				71BF64492C75579B00A592A4 /* APICallerProtocol.swift in Sources */,
 				71BF644D2C75588600A592A4 /* APICaller.swift in Sources */,
+				712C05E52C7E56C200490C8C /* ZoomAnimatedTransitioning.swift in Sources */,
+				71339B9C2C7D0CAD00396422 /* ImageBottomBannerView.swift in Sources */,
+				712C05EB2C7E62C400490C8C /* SwipeBackPresentationController.swift in Sources */,
 				71BF64622C77DC8200A592A4 /* ImageCardView.swift in Sources */,
 				71BF645A2C77BED300A592A4 /* ImageListCollectionViewCell.swift in Sources */,
+				7130275C2C7FBE4800CA74F8 /* CategoryViewModel.swift in Sources */,
+				71BF646F2C7BAB0900A592A4 /* UIImageView+Extensions.swift in Sources */,
 				71BF64042C74F77B00A592A4 /* AppDelegate.swift in Sources */,
 				71BF64452C75543300A592A4 /* UserStorage.swift in Sources */,
 				71BF64472C75571D00A592A4 /* APIConstants.swift in Sources */,
 				71BF64542C77BDB300A592A4 /* UITableView+Extensions.swift in Sources */,
+				71BF64722C7BACFC00A592A4 /* APIEndpoints.swift in Sources */,
 				71BF644F2C775CD800A592A4 /* HomeViewController.swift in Sources */,
 				71BF64432C75517E00A592A4 /* Theme.swift in Sources */,
 				71BF640E2C74F77B00A592A4 /* WallpaperApp.xcdatamodeld in Sources */,
@@ -779,6 +886,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		71BF64682C7A8B1700A592A4 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		71BF64732C7BDA5800A592A4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		717B7B452C7BDB0B0095ED8A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71BF64732C7BDA5800A592A4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		717B7B472C7BDB0B0095ED8A /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71BF64732C7BDA5800A592A4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+		71BF64692C7A8B1700A592A4 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71BF64682C7A8B1700A592A4 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		71BF640C2C74F77B00A592A4 /* WallpaperApp.xcdatamodeld */ = {

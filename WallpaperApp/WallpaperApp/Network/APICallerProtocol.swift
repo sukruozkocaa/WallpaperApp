@@ -8,5 +8,6 @@
 import Foundation
 
 protocol APICallerProtocol {
-    func apiCaller(fetchData _completion: @escaping (Result<WallpaperListResponse, Error>) -> Void) 
+    func apiCallerForSearch(categoryType: CategoryTypes?, page: Int, completion: @escaping (Result<PexelsResponse, Error>) -> Void)
+    func apiCallerCategoryList(categoryType: CategoryTypes, completion: @escaping (Result<PexelsResponse, Error>) -> Void)
 }

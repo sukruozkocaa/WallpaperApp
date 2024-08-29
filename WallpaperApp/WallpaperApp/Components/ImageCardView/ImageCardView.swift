@@ -7,18 +7,33 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 // MARK: - ImageCardView
 final class ImageCardView: UIView {
     
     // MARK: - Views
-    private lazy var imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.backgroundColor = .clear
+        imageView.layer.cornerRadius = 4.0
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.kf.indicatorType = .activity
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
+    private lazy var bottomBannerView: ImageBottomBannerView = {
+        let view = ImageBottomBannerView()
+        view.layer.masksToBounds = true
+        view.backgroundColor = Theme.Color.black.withAlphaComponent(bannerBackgroundColorRatio)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+        
     // MARK: - Variables
+    var bannerBackgroundColorRatio: CGFloat = 0.6
     var cornerRadius: CGFloat = .zero {
         didSet {
             imageView.layer.cornerRadius = cornerRadius
@@ -52,6 +67,7 @@ final class ImageCardView: UIView {
 private extension ImageCardView {
     final func setupViews() {
         setupImageView()
+        setupBottomBannerView()
     }
     
     final func setupImageView() {
@@ -62,13 +78,25 @@ private extension ImageCardView {
             imageView.heightAnchor.constraint(equalTo: heightAnchor)
         ])
     }
+    
+    final func setupBottomBannerView() {
+        imageView.addSubview(bottomBannerView)
+        
+        NSLayoutConstraint.activate([
+            bottomBannerView.heightAnchor.constraint(equalToConstant: 30.0),
+            bottomBannerView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            bottomBannerView.widthAnchor.constraint(equalTo: imageView.widthAnchor)
+        ])
+    }
 }
 
 // MARK: - Helpers
 extension ImageCardView {
-    final func setImage(with url: String) {
-        if let imageURL = URL(string: url) {
-            print("image URL \(url)")
-        }
+    final func setImage(with url: String?) {
+        imageView.loadImageWithURL(with: url)
+    }
+    
+    final func configureBottomBannerView(iconImage: UIImage?, titleText: String?) {
+        bottomBannerView.configure(iconImage: iconImage, titleText: titleText)
     }
 }
