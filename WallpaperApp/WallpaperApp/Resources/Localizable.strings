@@ -8,3 +8,9 @@
 
 // MARK: - HomeViewController
 "Home_page_navigation_title" = "Anasayfa";
+
+// MARK: - CategoryListTableViewCell
+"CategoryListTableViewCell_button.title" = "Tümünü gör";
+
+// MARK: - CategoryDetailReusableView
+"CategoryDetailReusableView_button.title" = "Tümünü gör";

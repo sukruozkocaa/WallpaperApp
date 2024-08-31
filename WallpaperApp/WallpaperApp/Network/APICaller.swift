@@ -14,7 +14,7 @@ enum APIError: Error {
 
 // MARK: - APICaller
 struct APICaller: APICallerProtocol {
-    
+
     // MARK: - Static Variables
     static let shared = APICaller()
     
@@ -64,4 +64,45 @@ struct APICaller: APICallerProtocol {
         }
     }
     
+    func apiCallerCategoryList(completion: @escaping (Result<CategoryListDataModel, Error>) -> Void) {
+        let urlString = "\(APIConstants.baseAPIURL)collections/featured/?page=1&per_page=20"
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": APIConstants.API_KEY
+        ]
+        
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: CategoryListDataModel.self) { response in
+            switch response.result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func apiCallerCategoryDetail(categoryId: String, count: String, completion: @escaping (Result<CategoryDetailDataModel, Error>) -> Void) {
+        let urlString = "\(APIConstants.baseAPIURL)collections/\(categoryId)?per_page=\(count)"
+
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": APIConstants.API_KEY
+        ]
+        
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: CategoryDetailDataModel.self) { response in
+            switch response.result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

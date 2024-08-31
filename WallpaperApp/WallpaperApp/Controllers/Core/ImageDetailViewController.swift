@@ -13,6 +13,7 @@ final class ImageDetailViewController: UIViewController {
     // MARK: - Views
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.masksToBounds = true
         imageView.backgroundColor = .clear
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,6 +36,7 @@ final class ImageDetailViewController: UIViewController {
     // MARK: - Init
     init(image: UIImage?) {
         super.init(nibName: nil, bundle: nil)
+        view.backgroundColor = .orange
         imageView.image = image
         setupViews()
     }

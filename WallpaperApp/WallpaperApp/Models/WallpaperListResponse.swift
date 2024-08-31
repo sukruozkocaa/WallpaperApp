@@ -66,7 +66,7 @@ enum CategoryTypes: String, CaseIterable {
 }
 
 extension CategoryTypes {
-    var title: String? {
+    var viewTitle: String? {
         switch self {
         case .catalog:
             return "Catalog"

@@ -7,16 +7,31 @@
 
 import UIKit
 
-extension String {
-    var localized: String {
-      return NSLocalizedString(self, comment: "\(self)_comment")
-    }
-}
-
 // MARK: - HomeViewController
 final class HomeViewController: UIViewController {
 
     // MARK: - Views
+    private lazy var backButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(
+            image: UIImage(
+                systemName: "lessthan.circle",
+                withConfiguration: UIImage.SymbolConfiguration(pointSize: 20.0)
+            ),
+            style: .plain, target: self,
+            action: #selector(tapToBack)
+        )
+        barButtonItem.tintColor = .black
+        return barButtonItem
+    }()
+    
+    private lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "bg_NeonLight")
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(
             frame: .zero,
@@ -40,7 +55,7 @@ final class HomeViewController: UIViewController {
     private var separatorLineView: UIView!
     
     // MARK: - Variables
-    var categoryType: CategoryTypes?
+    var categoryId: String?
     private var model: HomeViewModel?
     
     // MARK: - Constants
@@ -54,48 +69,38 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
-        model = HomeViewModel()
-        model?.getPexelsResponse(categoryType: categoryType, page: 10)
-        
-        model?.reloadHandler = {
-            self.collectionView.reloadData()
-        }
+        callToViewModelForUIUpdate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Home_page_navigation_title".localized
-        setupNavigationBarSeparatorLineView()
+        view.backgroundColor = .white
+        navigationItem.leftBarButtonItem = backButtonItem
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.isTranslucent = true
+        navigationItem.largeTitleDisplayMode = .automatic
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        separatorLineView.removeFromSuperview()
     }
 }
 
 // MARK: - Setup UI
 private extension HomeViewController {
     final func setupUI() {
-        view.backgroundColor = Theme.Color.backgroundColor
-        navigationController?.navigationBar.backgroundColor = Theme.Color.backgroundColor
-        navigationController?.navigationBar.barStyle = .black
         setupViews()
     }
-    
-    final func setupNavigationBarSeparatorLineView() {
-        if let navigationBar = navigationController?.navigationBar {
-            let separatorHeight: CGFloat = 0.5
-            let separatorLineView = UIView(frame: CGRect(
-                x: 0,
-                y: navigationBar.frame.height,
-                width: navigationBar.frame.width,
-                height: separatorHeight)
-            )
-            separatorLineView.backgroundColor = .lightGray
-            navigationBar.addSubview(separatorLineView)
-            self.separatorLineView = separatorLineView
+}
+
+// MARK: - Setup ViewModel
+private extension HomeViewController {
+    final func callToViewModelForUIUpdate() {
+        model = HomeViewModel()
+        model?.getPexelsResponse(categoryId: categoryId, page: 50)
+        
+        model?.reloadHandler = {
+            self.collectionView.reloadData()
         }
     }
 }
@@ -103,8 +108,18 @@ private extension HomeViewController {
 // MARK: - Setup Views
 private extension HomeViewController {
     final func setupViews() {
+//        setupBackgroundImageView()
         setupCollectionView()
         setupCollectionViewLayout()
+    }
+    
+    final func setupBackgroundImageView() {
+        view.addSubview(backgroundImageView)
+        
+        NSLayoutConstraint.activate([
+            backgroundImageView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            backgroundImageView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
     }
     
     final func setupCollectionView() {
@@ -128,12 +143,12 @@ private extension HomeViewController {
 // MARK: - UICollectionViewDelegate & UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model?.pexelsItemList.value?.count ?? 0
+        return model?.pexelsItemList.value?.media?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: ImageListCollectionViewCell.self, for: indexPath)
-        guard let item =  model?.pexelsItemList.value?[indexPath.row] else { return UICollectionViewCell() }
+        guard let item =  model?.pexelsItemList.value?.media?[indexPath.row] else { return UICollectionViewCell() }
         cell.configure(item: item)
         return cell
     }
@@ -143,7 +158,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item =  model?.pexelsItemList.value?[indexPath.row],
+        guard let item =  model?.pexelsItemList.value?.media?[indexPath.row],
               let cell = collectionView.cellForItem(at: indexPath) as? ImageListCollectionViewCell else { return }
         pushToImageDetailViewController(imageURL: item.src?.original, cell: cell)
     }
@@ -153,7 +168,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 private extension HomeViewController {
     final func pushToImageDetailViewController(imageURL: String?, cell: ImageListCollectionViewCell) {
         let imageDetailVC = ImageDetailViewController(image: cell.imageCardView.imageView.image)
-        imageDetailVC.setZoomTransition(originalView: cell)
+        imageDetailVC.setZoomTransition(originalView: cell.imageCardView.imageView)
         self.present(imageDetailVC, animated: true)
     }
 }
@@ -165,3 +180,10 @@ extension HomeViewController: PinterestLayoutDelegate {
     }
 }
 
+// MARK: - Tap To Handlers
+@objc
+private extension HomeViewController {
+    final func tapToBack() {
+        navigationController?.popViewController(animated: true)
+    }
+}

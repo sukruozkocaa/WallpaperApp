@@ -10,7 +10,7 @@ import Foundation
 // MARK: - HomeViewModel
 final class HomeViewModel {
     private let apiCaller: APICallerProtocol
-    private(set) var pexelsItemList = Observable<[Photo]>()
+    private(set) var pexelsItemList = Observable<CategoryDetailDataModel>()
 
     var reloadHandler: (() -> Void)? = nil
     
@@ -19,30 +19,26 @@ final class HomeViewModel {
     }
 
     // MARK: - Get Pexels Response
-    final func getPexelsResponse(categoryType: CategoryTypes?, page: Int) {
-        apiCaller.apiCallerForSearch(categoryType: categoryType, page: page) { [weak self] result in
+    final func getPexelsResponse(categoryId: String?, page: Int) {
+        guard let categoryId = categoryId else { return }
+        apiCaller.apiCallerCategoryDetail(categoryId: categoryId, count: "30") { [weak self] result in
+            guard let self = self else { return }
             DispatchQueue.main.async {
-                guard let self = self else {
-                    return
-                }
-                
                 switch result {
                 case .success(let success):
                     self.setupPexelsResponse(data: success)
                 case .failure(let error):
                     print(error.localizedDescription)
-                    self.pexelsItemList.value = []
                 }
                 self.reloadHandler?()
             }
         }
-        
     }
 }
 
 private extension HomeViewModel {
-    final func setupPexelsResponse(data: PexelsResponse?) {
-        pexelsItemList.value = data?.photos
+    final func setupPexelsResponse(data: CategoryDetailDataModel?) {
+        pexelsItemList.value = data
         reloadHandler?()
     }
 }

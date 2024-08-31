@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Kingfisher
+import SDWebImage
 
 // MARK: - UIImageView Extensions
 extension UIImageView {
@@ -18,6 +19,10 @@ extension UIImageView {
             return
         }
         
-        kf.setImage(with: URL(string: imageURL))
+        sd_setImage(with: URL(string: imageURL))
+    }
+    
+    final func setLoadingIndicator() {
+        sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
     }
 }

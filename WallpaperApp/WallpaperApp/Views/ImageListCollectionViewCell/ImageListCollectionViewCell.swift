@@ -40,15 +40,20 @@ private extension ImageListCollectionViewCell {
         addSubview(imageCardView)
         
         NSLayoutConstraint.activate([
-            imageCardView.widthAnchor.constraint(equalTo: widthAnchor),
-            imageCardView.heightAnchor.constraint(equalTo: heightAnchor)
+            imageCardView.topAnchor.constraint(equalTo: topAnchor, constant: 1.0),
+            imageCardView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 1.0),
+            imageCardView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -1.0),
+            imageCardView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1.0)
+//            imageCardView.widthAnchor.constraint(equalTo: widthAnchor),
+//            imageCardView.heightAnchor.constraint(equalTo: heightAnchor)
         ])
     }
 }
 
 // MARK: - Configure
 extension ImageListCollectionViewCell {
-    final func configure(item: Photo) {
+    final func configure(item: CategoryMediaDataModel) {
+        imageCardView.borderColor = UIColor(hexString: item.avg_color ?? "").cgColor
         imageCardView.setImage(with: item.src?.original)
         imageCardView.configureBottomBannerView(iconImage: UIImage(named: "icPencilVector"), titleText: item.photographer)
     }

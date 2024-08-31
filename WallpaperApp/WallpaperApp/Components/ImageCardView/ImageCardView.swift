@@ -16,10 +16,11 @@ final class ImageCardView: UIView {
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .clear
-        imageView.layer.cornerRadius = 4.0
+        imageView.layer.cornerRadius = 8.0
+        imageView.layer.borderWidth = 0.5
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.kf.indicatorType = .activity
+        imageView.setLoadingIndicator()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
