@@ -86,8 +86,36 @@ struct APICaller: APICallerProtocol {
     }
     
     func apiCallerCategoryDetail(categoryId: String, count: String, completion: @escaping (Result<CategoryDetailDataModel, Error>) -> Void) {
-        let urlString = "\(APIConstants.baseAPIURL)collections/\(categoryId)?per_page=\(count)"
+        let urlString = "\(APIConstants.baseAPIURL)collections/\(categoryId)?per_page=10"
 
+        print("URL \(urlString)")
+        guard let url = URL(string: urlString) else {
+            return
+        }
+ 
+        let headers: HTTPHeaders = [
+            "Authorization": APIConstants.API_KEY
+        ]
+        
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: CategoryDetailDataModel.self) { response in
+            switch response.result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func apiCallerCategoryItemsList(nextPageURL: String?, categoryId: String, completion: @escaping (Result<CategoryDetailDataModel, Error>) -> Void) {
+        var urlString: String = ""
+        
+        if nextPageURL == nil {
+            urlString = "\(APIConstants.baseAPIURL)collections/\(categoryId)?per_page=8"
+        } else {
+            urlString = nextPageURL ?? ""
+        }
+                
         guard let url = URL(string: urlString) else {
             return
         }

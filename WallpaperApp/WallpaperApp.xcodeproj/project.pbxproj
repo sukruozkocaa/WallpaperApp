@@ -387,8 +387,8 @@
 		71BF645F2C77DADB00A592A4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				71BF644E2C775CD800A592A4 /* HomeViewController.swift */,
 				713027592C7FBA6400CA74F8 /* CategoryListViewController.swift */,
+				71BF644E2C775CD800A592A4 /* HomeViewController.swift */,
 				71339B9D2C7D10DF00396422 /* ImageDetailViewController.swift */,
 			);
 			path = Core;

@@ -51,7 +51,12 @@ final class PinterestLayout: UICollectionViewLayout {
     
     // MARK: - Prepare
     override func prepare() {
-        guard cache.isEmpty, let collectionView = collectionView else { return }
+        guard let collectionView = collectionView else { return }
+        
+        // Veri yeniden yüklendiğinde cache'i temizleyin
+        cache.removeAll()
+        contentHeight = 0
+        
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         let xOffset = (.zero..<numberOfColumns).map { CGFloat($0) * columnWidth }
         var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
@@ -73,6 +78,7 @@ final class PinterestLayout: UICollectionViewLayout {
             column = (column + 1) % numberOfColumns
         }
     }
+
     
     // MARK: - LayoutAttributesForElements
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {

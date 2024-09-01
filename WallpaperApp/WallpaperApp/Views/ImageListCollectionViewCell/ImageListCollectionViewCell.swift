@@ -55,6 +55,6 @@ extension ImageListCollectionViewCell {
     final func configure(item: CategoryMediaDataModel) {
         imageCardView.borderColor = UIColor(hexString: item.avg_color ?? "").cgColor
         imageCardView.setImage(with: item.src?.original)
-        imageCardView.configureBottomBannerView(iconImage: UIImage(named: "icPencilVector"), titleText: item.photographer)
+        imageCardView.configureBottomBannerView(iconImage: UIImage(named: "ic_user_fill"), titleText: item.photographer)
     }
 }

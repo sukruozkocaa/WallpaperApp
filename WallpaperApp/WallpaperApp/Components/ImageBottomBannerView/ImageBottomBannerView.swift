@@ -28,6 +28,10 @@ final class ImageBottomBannerView: UIView {
         return label
     }()
     
+    // MARK: - Constants
+    private let iconWidth: CGFloat = 20.0
+    private let iconHeight: CGFloat = 20.0
+    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,10 +54,10 @@ private extension ImageBottomBannerView {
         addSubview(iconImageView)
         
         NSLayoutConstraint.activate([
-            iconImageView.widthAnchor.constraint(equalToConstant: 15.0),
-            iconImageView.heightAnchor.constraint(equalToConstant: 15.0),
             iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15.0)
+            iconImageView.widthAnchor.constraint(equalToConstant: iconWidth),
+            iconImageView.heightAnchor.constraint(equalToConstant: iconHeight),
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10.0)
         ])
     }
     
@@ -62,8 +66,8 @@ private extension ImageBottomBannerView {
         
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 10.0),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5.0)
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5.0),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8.0),
         ])
     }
 }
@@ -71,7 +75,7 @@ private extension ImageBottomBannerView {
 // MARK: - Configure
 extension ImageBottomBannerView {
     final func configure(iconImage: UIImage?, titleText: String?) {
-        iconImageView.image = iconImage?.withRenderingMode(.alwaysTemplate)
+        iconImageView.image = iconImage?.withRenderingMode(.alwaysOriginal)
         titleLabel.text = titleText
     }
 }

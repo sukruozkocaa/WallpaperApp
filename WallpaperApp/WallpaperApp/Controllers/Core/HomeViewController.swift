@@ -46,6 +46,12 @@ final class HomeViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var refreshController: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(swipeToRefresh), for: .valueChanged)
+        return refreshControl
+    }()
+    
     private lazy var layout: PinterestLayout = {
         let layout = PinterestLayout()
         layout.delegate = self
@@ -57,6 +63,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Variables
     var categoryId: String?
     private var model: HomeViewModel?
+    private var pageCount: Int = 1
     
     // MARK: - Constants
     private let minHeightArea = 250.0
@@ -97,10 +104,13 @@ private extension HomeViewController {
 private extension HomeViewController {
     final func callToViewModelForUIUpdate() {
         model = HomeViewModel()
-        model?.getPexelsResponse(categoryId: categoryId, page: 50)
+        model?.getPexelsResponse(categoryId: categoryId)
         
-        model?.reloadHandler = {
+        model?.reloadHandler = { [weak self] in
+            guard let self = self else { return }
             self.collectionView.reloadData()
+//            self.layout.invalidateLayout()
+//            self.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
 }
@@ -130,6 +140,8 @@ private extension HomeViewController {
             collectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+        
+        collectionView.refreshControl = refreshController
     }
     
     final func setupCollectionViewLayout() {
@@ -143,12 +155,12 @@ private extension HomeViewController {
 // MARK: - UICollectionViewDelegate & UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model?.pexelsItemList.value?.media?.count ?? 0
+        return model?.pexelsItemList?.media?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: ImageListCollectionViewCell.self, for: indexPath)
-        guard let item =  model?.pexelsItemList.value?.media?[indexPath.row] else { return UICollectionViewCell() }
+        guard let item =  model?.pexelsItemList?.media?[indexPath.row] else { return UICollectionViewCell() }
         cell.configure(item: item)
         return cell
     }
@@ -158,9 +170,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item =  model?.pexelsItemList.value?.media?[indexPath.row],
+        guard let item =  model?.pexelsItemList?.media?[indexPath.row],
               let cell = collectionView.cellForItem(at: indexPath) as? ImageListCollectionViewCell else { return }
         pushToImageDetailViewController(imageURL: item.src?.original, cell: cell)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == (model?.pexelsItemList?.media?.count ?? 0) - 2 {
+            pageCount += 1
+            model?.getPexelsResponse(categoryId: categoryId)
+        }
     }
 }
 
@@ -176,7 +195,9 @@ private extension HomeViewController {
 // MARK: - PinterestLayoutDelegate
 extension HomeViewController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        return .random(in: minHeightArea...maxHeightArea)
+        var imageHeight = model?.pexelsItemList?.media?[indexPath.row].height
+        
+        return CGFloat(imageHeight ?? 0) * 0.07
     }
 }
 
@@ -185,5 +206,13 @@ extension HomeViewController: PinterestLayoutDelegate {
 private extension HomeViewController {
     final func tapToBack() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    final func swipeToRefresh() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+        
+        refreshController.endRefreshing()
     }
 }

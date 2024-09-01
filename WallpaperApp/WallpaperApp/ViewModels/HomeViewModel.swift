@@ -10,8 +10,9 @@ import Foundation
 // MARK: - HomeViewModel
 final class HomeViewModel {
     private let apiCaller: APICallerProtocol
-    private(set) var pexelsItemList = Observable<CategoryDetailDataModel>()
-
+    private var nextPageURL: String? = nil
+    private(set) var pexelsItemList: CategoryDetailDataModel?
+    
     var reloadHandler: (() -> Void)? = nil
     
     init(apiCaller: APICallerProtocol = APICaller()) {
@@ -19,18 +20,19 @@ final class HomeViewModel {
     }
 
     // MARK: - Get Pexels Response
-    final func getPexelsResponse(categoryId: String?, page: Int) {
+    final func getPexelsResponse(categoryId: String?) {
         guard let categoryId = categoryId else { return }
-        apiCaller.apiCallerCategoryDetail(categoryId: categoryId, count: "30") { [weak self] result in
+        
+        apiCaller.apiCallerCategoryItemsList(nextPageURL: nextPageURL, categoryId: categoryId) { [weak self] result in
             guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let success):
-                    self.setupPexelsResponse(data: success)
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-                self.reloadHandler?()
+            switch result {
+            case .success(let data):
+                nextPageURL = data.next_page
+                
+                setupPexelsResponse(data: data)
+            case .failure(let fail):
+                print(fail.localizedDescription)
+                break
             }
         }
     }
@@ -38,7 +40,15 @@ final class HomeViewModel {
 
 private extension HomeViewModel {
     final func setupPexelsResponse(data: CategoryDetailDataModel?) {
-        pexelsItemList.value = data
+        guard var existingItemList = pexelsItemList else {
+            pexelsItemList = data
+            reloadHandler?()
+            return
+        }
+        
+        guard let newMedia = data?.media else { return }
+        existingItemList.media?.append(contentsOf: newMedia)
+        pexelsItemList?.media = existingItemList.media
         reloadHandler?()
     }
 }

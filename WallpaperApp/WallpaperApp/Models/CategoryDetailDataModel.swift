@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct CategoryDetailDataModel: Codable {
+class CategoryDetailDataModel: Codable {
     let page: Int?
     let per_page: Int?
-    let media: [CategoryMediaDataModel]?
+    var media: [CategoryMediaDataModel]?
     let total_results: Int?
     let next_page: String?
     let id: String?
