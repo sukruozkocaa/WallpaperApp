@@ -20,7 +20,8 @@ extension Theme {
     enum Color {
         static let black: UIColor = .black
         static let white: UIColor = .white
-        static let backgroundColor: UIColor = .init(hexString: "#1B1B1B")
+        static let backgroundColor: UIColor = .init(hexString: "0B030F")
+        static let tableViewSeparatorLineColor: UIColor = .init(hexString: "B8B42F")
     }
     
     enum borderColor {

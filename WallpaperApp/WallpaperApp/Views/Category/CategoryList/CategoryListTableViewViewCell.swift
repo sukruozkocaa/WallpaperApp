@@ -169,11 +169,10 @@ extension CategoryListTableViewViewCell: UICollectionViewDelegate, UICollectionV
 
 // MARK: - Configure
 extension CategoryListTableViewViewCell {
-    final func configure(categoryId: String?, title: String?, data: [CategoryMediaDataModel]?) {
-        self.categoryId = categoryId
-        
-        titleLabel.text = title
-        categoryMediaList = data
+    final func configure(item: CategoryListCollection?) {
+        categoryId = item?.id
+        titleLabel.text = item?.title
+        categoryMediaList = item?.photoList
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }

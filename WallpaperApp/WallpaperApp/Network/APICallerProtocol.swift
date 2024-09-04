@@ -9,7 +9,7 @@ import Foundation
 
 protocol APICallerProtocol {
     func apiCallerForSearch(categoryType: CategoryTypes?, page: Int, completion: @escaping (Result<PexelsResponse, Error>) -> Void)
-    func apiCallerCategoryList(completion: @escaping (Result<CategoryListDataModel, Error>) -> Void)
+    func apiCallerCategoryList(nextPageURL: String?, completion: @escaping (Result<CategoryListDataModel, Error>) -> Void)
     func apiCallerCategoryDetail(categoryId: String, count: String, completion: @escaping (Result<CategoryDetailDataModel, Error>) -> Void)
     func apiCallerCategoryItemsList(nextPageURL: String?, categoryId: String, completion: @escaping (Result<CategoryDetailDataModel, Error>) -> Void)
 }

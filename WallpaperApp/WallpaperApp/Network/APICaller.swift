@@ -14,7 +14,7 @@ enum APIError: Error {
 
 // MARK: - APICaller
 struct APICaller: APICallerProtocol {
-
+    
     // MARK: - Static Variables
     static let shared = APICaller()
     
@@ -43,18 +43,24 @@ struct APICaller: APICallerProtocol {
         }
     }
     
-    func apiCallerCategoryList(categoryType cateyoryType: CategoryTypes, completion: @escaping (Result<PexelsResponse, Error>) -> Void) {
-        let urlString = "\(APIConstants.baseAPIURL)search?query=\(cateyoryType.rawValue)&per_page=1"
-        
+    func apiCallerCategoryList(nextPageURL: String?, completion: @escaping (Result<CategoryListDataModel, Error>) -> Void) {
+        var urlString: String = ""
+                
+        if nextPageURL == nil {
+            urlString = "\(APIConstants.baseAPIURL)collections/featured?per_page=8"
+        } else {
+            urlString = nextPageURL ?? ""
+        }
+                
         guard let url = URL(string: urlString) else {
             return
         }
-                
+        
         let headers: HTTPHeaders = [
             "Authorization": APIConstants.API_KEY
         ]
-          
-        AF.request(url, method: .get, headers: headers).responseDecodable(of: PexelsResponse.self) { response in
+        
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: CategoryListDataModel.self) { response in
             switch response.result {
             case .success(let result):
                 completion(.success(result))
@@ -65,7 +71,7 @@ struct APICaller: APICallerProtocol {
     }
     
     func apiCallerCategoryList(completion: @escaping (Result<CategoryListDataModel, Error>) -> Void) {
-        let urlString = "\(APIConstants.baseAPIURL)collections/featured/?page=1&per_page=20"
+        let urlString = "\(APIConstants.baseAPIURL)collections/featured/?page=1&per_page=10"
         
         guard let url = URL(string: urlString) else {
             return

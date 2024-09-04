@@ -17,20 +17,9 @@ final class CategoryListViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
-    private lazy var backgroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "bg_NeonLight")
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(
-            frame: .zero,
-            style: .grouped
-        )
+        let tableView = UITableView(frame: .zero,style: .grouped)
         tableView.rowHeight = cellHeight
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
@@ -43,23 +32,35 @@ final class CategoryListViewController: UIViewController {
     }()
 
     // MARK: - Variables
-    var model: CategoryViewModel = CategoryViewModel()
+    private var viewModel: CategoryViewModelProtocol
+    private let router: CategoryListRouterProtocol
     var storedOffsets = [Int: CGFloat]()
 
     // MARK: - Constants
     private let cellHeight: CGFloat = 300.0
+    private let tableViewSeparatorLineHeight: CGFloat = 0.5
     
     // MARK: - Life Cycles
+    init(viewModel: CategoryViewModelProtocol = CategoryViewModel(), router: CategoryListRouterProtocol = CategoryListRouter()) {
+        self.viewModel = viewModel
+        self.router = router
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        callToViewModelForUIUpdate()
+        viewModel.loadCategoryList()
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBarView()
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,12 +73,11 @@ final class CategoryListViewController: UIViewController {
     }
 }
 
-// MARK: - Setup ViewModel
+// MARK: - Bind ViewModel
 private extension CategoryListViewController {
-    final func callToViewModelForUIUpdate() {
-        model.getCategoryList()
-        model.reloadHandler = { [weak self] in
-            guard let self = self else { return }
+    final func bindViewModel() {
+        viewModel.reloadHandler = { [weak self] in
+            guard let self else { return }
             tableView.reloadData()
         }
     }
@@ -86,7 +86,6 @@ private extension CategoryListViewController {
 // MARK: - Navigation Bar
 private extension CategoryListViewController {
     final func setupNavigationBarView() {
-        guard let navigationBar = navigationController?.navigationBar else { return }
         navigationItem.titleView = navBarImageView
     }
 }
@@ -95,17 +94,7 @@ private extension CategoryListViewController {
 private extension CategoryListViewController {
     final func setupViews() {
         view.backgroundColor = Theme.Color.backgroundColor
-        setupBackgroundImageView()
         setupTableView()
-    }
-    
-    final func setupBackgroundImageView() {
-        view.addSubview(backgroundImageView)
-        
-        NSLayoutConstraint.activate([
-            backgroundImageView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            backgroundImageView.heightAnchor.constraint(equalTo: view.heightAnchor)
-        ])
     }
 
     final func setupTableView() {
@@ -122,70 +111,60 @@ private extension CategoryListViewController {
 // MARK: - UITableViewDelegate & UITableViewDataSource
 extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return model.categoryList.value?.collections?.count ?? 0
+        return viewModel.categoryList.value?.collections?.count ?? 0
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let item = model.categoryList.value?.collections?[indexPath.section] else {
+        guard let item = viewModel.categoryList.value?.collections?[indexPath.section] else {
             return UITableViewCell()
         }
         
         let cell = tableView.dequeueReusableCell(for: CategoryListTableViewViewCell.self, for: indexPath)
-        cell.configure(categoryId: item.id, title: item.title, data: item.photoList)
+        cell.configure(item: item)
         cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 5.0))
-        view.backgroundColor = UIColor(hexString: "0B030F")
-        return view
+        guard section != .zero else { return nil }
+        let separatorLineView = UIView(frame: CGRect(
+            x: .zero,
+            y: .zero,
+            width: tableView.frame.width,
+            height: tableViewSeparatorLineHeight)
+        )
+        separatorLineView.backgroundColor = Theme.Color.tableViewSeparatorLineColor
+        return separatorLineView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5.0
+        guard section != .zero else { return CGFloat() }
+        return tableViewSeparatorLineHeight
     }
-}
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let collectionsCount = viewModel.categoryList.value?.collections?.count,
+                 indexPath.section == collectionsCount - 2 else { return }
 
-// MARK: - Routers
-private extension CategoryListViewController {
-    final func pushToHomeViewController(categoryType: CategoryTypes) {
-        let homeVC = HomeViewController()
-        navigationController?.pushViewController(homeVC, animated: true)
-    }
-    
-    final func pushToImageDetailVC(image: UIImage?, view: UIView) {
-        let imageDetailVC = ImageDetailViewController(image: image)
-        imageDetailVC.setZoomTransition(originalView: view)
-        self.present(imageDetailVC, animated: true)
-    }
-    
-    final func pushToHomeViewController(type: CategoryTypes) {
-        pushToHomeViewController(categoryType: type)
+        viewModel.loadCategoryList()
     }
 }
 
 // MARK: - CategoryListTableViewViewCellDelegate
 extension CategoryListViewController: CategoryListTableViewViewCellDelegate {
     func categoryListTableViewViewCell(_ cell: CategoryListTableViewViewCell, _ categoryId: String?) {
-        let homeVC = HomeViewController()
-        homeVC.categoryId = categoryId
-        navigationController?.pushViewController(homeVC, animated: true)
+        router.navigateToHomeViewController(from: self, with: categoryId, categoryName: nil)
     }
     
     func categoryListTableViewViewCell(_ cell: CategoryListTableViewViewCell, _ onTapImageView: UIImageView) {
-        pushToImageDetailVC(image: onTapImageView.image, view: onTapImageView)
+        router.navigateToImageDetail(from: self, imageView: onTapImageView)
     }
     
     func categoryListTableViewViewCell(_ cell: CategoryListTableViewViewCell, _ categoryId: String?, _ categoryName: String) {
-        let homeVC = HomeViewController()
-        homeVC.categoryId = categoryId
-        homeVC.navigationItem.title = categoryName
-        navigationController?.pushViewController(homeVC, animated: true)
+        router.navigateToHomeViewController(from: self, with: categoryId, categoryName: categoryName)
     }
 }

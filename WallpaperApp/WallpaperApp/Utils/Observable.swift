@@ -27,6 +27,6 @@ class Observable<T> {
     
     func bind(callback: @escaping (T?) -> Void) {
         _callback = callback
-        callback(_value)  // Mevcut değeri hemen geri çağır
+        callback(_value)
     }
 }

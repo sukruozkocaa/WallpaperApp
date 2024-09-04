@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IHProgressHUD
 
 // MARK: - HomeViewController
 final class HomeViewController: UIViewController {
@@ -15,21 +16,10 @@ final class HomeViewController: UIViewController {
         let barButtonItem = UIBarButtonItem(
             image: UIImage(
                 systemName: "lessthan.circle",
-                withConfiguration: UIImage.SymbolConfiguration(pointSize: 20.0)
-            ),
-            style: .plain, target: self,
-            action: #selector(tapToBack)
-        )
-        barButtonItem.tintColor = .black
+                withConfiguration: UIImage.SymbolConfiguration(pointSize: backButtonPointSize)
+            ), style: .plain, target: self, action: #selector(tapToBack))
+        barButtonItem.tintColor = .white
         return barButtonItem
-    }()
-    
-    private lazy var backgroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "bg_NeonLight")
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
     }()
     
     private lazy var collectionView: UICollectionView = {
@@ -37,17 +27,19 @@ final class HomeViewController: UIViewController {
             frame: .zero,
             collectionViewLayout: UICollectionViewLayout()
         )
+        collectionView.contentInset.bottom = 20.0
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.contentInset.top = collectionViewContentInsetTop
         collectionView.register(ImageListCollectionViewCell.self)
-        collectionView.contentInset.top = 1.0
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
     private lazy var refreshController: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .white
         refreshControl.addTarget(self, action: #selector(swipeToRefresh), for: .valueChanged)
         return refreshControl
     }()
@@ -62,30 +54,46 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Variables
     var categoryId: String?
-    private var model: HomeViewModel?
-    private var pageCount: Int = 1
+    private var viewModel: HomeViewModelProtocol
+    private var router: HomeRouterProtocol
     
     // MARK: - Constants
-    private let minHeightArea = 250.0
-    private let maxHeightArea = 400.0
-    private let cellXMargin = 1.0
-    private let cellYMargin = 1.0
-    private let collectionViewNumberOfColumns = 2
+    private let minHeightArea: CGFloat = 250.0
+    private let maxHeightArea: CGFloat = 400.0
+    private let cellXMargin: CGFloat = 1.0
+    private let cellYMargin: CGFloat = 1.0
+    private let collectionViewNumberOfColumns: Int = 2
+    private let collectionViewContentInsetTop: CGFloat = 1.0
+    private let backButtonPointSize: CGFloat = 20.0
+    
+    // MARK: - Init
+    init(categoryId: String? = nil, viewModel: HomeViewModelProtocol, router: HomeRouterProtocol) {
+        self.categoryId = categoryId
+        self.viewModel = viewModel
+        self.router = router
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        IHProgressHUD.show()
         setupUI()
-        callToViewModelForUIUpdate()
+        viewModel.categoryId = categoryId
+        viewModel.loadCategoryListItems()
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.backgroundColor = .white
+        view.backgroundColor = Theme.Color.backgroundColor
         navigationItem.leftBarButtonItem = backButtonItem
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.isTranslucent = true
         navigationItem.largeTitleDisplayMode = .automatic
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -102,15 +110,11 @@ private extension HomeViewController {
 
 // MARK: - Setup ViewModel
 private extension HomeViewController {
-    final func callToViewModelForUIUpdate() {
-        model = HomeViewModel()
-        model?.getPexelsResponse(categoryId: categoryId)
-        
-        model?.reloadHandler = { [weak self] in
-            guard let self = self else { return }
+    final func bindViewModel() {
+        viewModel.reloadHandler = { [weak self] in
+            guard let self else { return }
+            IHProgressHUD.dismiss()
             self.collectionView.reloadData()
-//            self.layout.invalidateLayout()
-//            self.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
 }
@@ -118,27 +122,17 @@ private extension HomeViewController {
 // MARK: - Setup Views
 private extension HomeViewController {
     final func setupViews() {
-//        setupBackgroundImageView()
         setupCollectionView()
         setupCollectionViewLayout()
     }
-    
-    final func setupBackgroundImageView() {
-        view.addSubview(backgroundImageView)
-        
-        NSLayoutConstraint.activate([
-            backgroundImageView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            backgroundImageView.heightAnchor.constraint(equalTo: view.heightAnchor)
-        ])
-    }
-    
+
     final func setupCollectionView() {
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         ])
         
         collectionView.refreshControl = refreshController
@@ -155,12 +149,12 @@ private extension HomeViewController {
 // MARK: - UICollectionViewDelegate & UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model?.pexelsItemList?.media?.count ?? 0
+        return viewModel.pexelsItemList.value?.media?.count ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: ImageListCollectionViewCell.self, for: indexPath)
-        guard let item =  model?.pexelsItemList?.media?[indexPath.row] else { return UICollectionViewCell() }
+        guard let item = viewModel.pexelsItemList.value?.media?[indexPath.row] else { return UICollectionViewCell() }
         cell.configure(item: item)
         return cell
     }
@@ -170,34 +164,23 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item =  model?.pexelsItemList?.media?[indexPath.row],
-              let cell = collectionView.cellForItem(at: indexPath) as? ImageListCollectionViewCell else { return }
-        pushToImageDetailViewController(imageURL: item.src?.original, cell: cell)
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ImageListCollectionViewCell else { return }
+        router.navigateToImageDetail(from: self, imageView: cell.imageCardView.imageView)
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == (model?.pexelsItemList?.media?.count ?? 0) - 2 {
-            pageCount += 1
-            model?.getPexelsResponse(categoryId: categoryId)
-        }
-    }
-}
-
-// MARK: - Routers
-private extension HomeViewController {
-    final func pushToImageDetailViewController(imageURL: String?, cell: ImageListCollectionViewCell) {
-        let imageDetailVC = ImageDetailViewController(image: cell.imageCardView.imageView.image)
-        imageDetailVC.setZoomTransition(originalView: cell.imageCardView.imageView)
-        self.present(imageDetailVC, animated: true)
+        guard let collectionsCount = viewModel.pexelsItemList.value?.media?.count,
+                 indexPath.section == collectionsCount - 2 else { return }
+        
+        viewModel.loadCategoryListItems()
     }
 }
 
 // MARK: - PinterestLayoutDelegate
 extension HomeViewController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        var imageHeight = model?.pexelsItemList?.media?[indexPath.row].height
-        
-        return CGFloat(imageHeight ?? 0) * 0.07
+        let imageHeight = viewModel.pexelsItemList.value?.media?[indexPath.row].height
+        return viewModel.getCollectionViewCellHeight(imageHeight: imageHeight)
     }
 }
 
@@ -205,14 +188,11 @@ extension HomeViewController: PinterestLayoutDelegate {
 @objc
 private extension HomeViewController {
     final func tapToBack() {
-        navigationController?.popViewController(animated: true)
+        router.navigateToPopViewController(from: self)
     }
     
     final func swipeToRefresh() {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-        
+        viewModel.removeAllItems()
         refreshController.endRefreshing()
     }
 }

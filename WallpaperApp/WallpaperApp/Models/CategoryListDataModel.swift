@@ -10,7 +10,7 @@ import Foundation
 class CategoryListDataModel: Decodable {
     let page: Int?
     let per_page: Int?
-    let collections: [CategoryListCollection]?
+    var collections: [CategoryListCollection]?
     let total_results: Int?
     let next_page: String?
     let prev_page: String?
