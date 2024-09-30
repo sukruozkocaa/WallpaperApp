@@ -20,15 +20,15 @@ final class MainTabBarViewController: TabViewController {
     }()
     
     private lazy var searchVC: UIViewController = {
-        let homeTabItem = UITabBarItem(title: "Search", image: UIImage(named: "ic_search"), selectedImage: nil)
-        let viewModel = CategoryViewModel()
-        let homeNavTab = NavigationController(rootViewController: CategoryListViewController(viewModel: viewModel))
+        let homeTabItem = UITabBarItem(title: "Search", image: UIImage(named: "ic_magnifyingGlassV2"), selectedImage: nil)
+        let viewModel = SearchViewModel()
+        let homeNavTab = NavigationController(rootViewController: SearchViewController(viewModel: viewModel))
         homeNavTab.tabBarItem = homeTabItem
         return homeNavTab
     }()
     
     private lazy var profileVC: UIViewController = {
-        let homeTabItem = UITabBarItem(title: "Profile", image: UIImage(named: "ic_profile"), selectedImage: nil)
+        let homeTabItem = UITabBarItem(title: "Profile", image: UIImage(named: "ic_man"), selectedImage: nil)
         let viewModel = CategoryViewModel()
         let homeNavTab = NavigationController(rootViewController: CategoryListViewController(viewModel: viewModel))
         homeNavTab.tabBarItem = homeTabItem
@@ -37,7 +37,7 @@ final class MainTabBarViewController: TabViewController {
     }()
     
     lazy var moreTab: UIViewController = {
-        let commentTabItem = UITabBarItem(title: "More", image: UIImage(named: "ic_settings"), selectedImage: nil)
+        let commentTabItem = UITabBarItem(title: "More", image: UIImage(named: "ic_wheel"), selectedImage: nil)
         let viewModel = CategoryViewModel()
         let navController = NavigationController(rootViewController: CategoryListViewController(viewModel: viewModel))
         navController.tabBarItem = commentTabItem
@@ -54,7 +54,6 @@ final class MainTabBarViewController: TabViewController {
 // MARK: - Setup UI
 private extension MainTabBarViewController {
     final func setupUI() {
-//        view.backgroundColor = .white
         setupViewControllers()
         setupTabBar()
     }
@@ -91,10 +90,11 @@ final class NavigationController: UINavigationController {
 
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
-        
+    
         navigationBar.shadowImage = UIImage()
         navigationBar.barTintColor = .white
         navigationBar.tintColor = .white
         navigationBar.isTranslucent = false
+        
     }
 }

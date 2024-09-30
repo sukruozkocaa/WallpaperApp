@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Kingfisher
 import SDWebImage
 
 // MARK: - UIImageView Extensions

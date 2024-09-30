@@ -9,7 +9,7 @@ import UIKit
 import IHProgressHUD
 
 // MARK: - HomeViewController
-final class HomeViewController: UIViewController {
+final class HomeViewController: BaseViewController {
 
     // MARK: - Views
     private lazy var backButtonItem: UIBarButtonItem = {

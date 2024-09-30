@@ -22,17 +22,21 @@ struct APICaller: APICallerProtocol {
     init() {}
 
     // MARK: - Fetch Data
-    func apiCallerForSearch(categoryType: CategoryTypes?, page: Int, completion: @escaping (Result<PexelsResponse, Error>) -> Void) {
-        let urlString = "\(APIConstants.baseAPIURL)search?query=\(categoryType?.rawValue ?? "")&per_page=20"
+    func apiCallerForSearch(searchText: String?, nextPageURL: String?, completion: @escaping (Result<PexelsResponse, Error>) -> Void) {
+        var urlStr: String = ""
         
-        guard let url = URL(string: urlString) else {
-            return
+        if nextPageURL == nil {
+            urlStr = "\(APIConstants.baseAPIURL)search?query=\(searchText ?? "")&page=1"
+        } else {
+            urlStr = nextPageURL ?? ""
         }
                 
+        guard let url = URL(string: urlStr) else { return }
+        
         let headers: HTTPHeaders = [
             "Authorization": APIConstants.API_KEY
         ]
-          
+        
         AF.request(url, method: .get, headers: headers).responseDecodable(of: PexelsResponse.self) { response in
             switch response.result {
             case .success(let result):
@@ -52,9 +56,7 @@ struct APICaller: APICallerProtocol {
             urlString = nextPageURL ?? ""
         }
                 
-        guard let url = URL(string: urlString) else {
-            return
-        }
+        guard let url = URL(string: urlString) else { return }
         
         let headers: HTTPHeaders = [
             "Authorization": APIConstants.API_KEY

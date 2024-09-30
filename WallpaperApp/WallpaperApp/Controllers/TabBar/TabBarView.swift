@@ -104,7 +104,7 @@ class CardTabBarView: UITabBar {
         NSLayoutConstraint.activate([
             container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CardTabBarViewUI.padding),
             container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -CardTabBarViewUI.padding),
-            container.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -CardTabBarViewUI.padding),
+            container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -CardTabBarViewUI.padding),
             container.heightAnchor.constraint(equalToConstant: 60),
 
             stackView.bottomAnchor.constraint(equalTo: container.bottomAnchor),

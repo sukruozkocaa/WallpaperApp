@@ -8,16 +8,9 @@
 import UIKit
 
 // MARK: - CategoryListViewController
-final class CategoryListViewController: UIViewController {
+final class CategoryListViewController: BaseViewController {
 
     // MARK: - Views
-    private lazy var navBarImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "ic_appNavBar")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero,style: .grouped)
         tableView.rowHeight = cellHeight
@@ -60,14 +53,8 @@ final class CategoryListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBarView()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navBarImageView.removeFromSuperview()
-    }
-        
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
@@ -80,13 +67,6 @@ private extension CategoryListViewController {
             guard let self else { return }
             tableView.reloadData()
         }
-    }
-}
-
-// MARK: - Navigation Bar
-private extension CategoryListViewController {
-    final func setupNavigationBarView() {
-        navigationItem.titleView = navBarImageView
     }
 }
 

@@ -20,6 +20,7 @@
 		7130275A2C7FBA6400CA74F8 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713027592C7FBA6400CA74F8 /* CategoryListViewController.swift */; };
 		7130275C2C7FBE4800CA74F8 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130275B2C7FBE4800CA74F8 /* CategoryViewModel.swift */; };
 		7130275F2C7FC48D00CA74F8 /* CategoryListTableViewViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130275E2C7FC48D00CA74F8 /* CategoryListTableViewViewCell.swift */; };
+		713084732C8E37DA005D236E /* EmptyDataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713084722C8E37DA005D236E /* EmptyDataCollectionViewCell.swift */; };
 		71339B9C2C7D0CAD00396422 /* ImageBottomBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71339B9B2C7D0CAD00396422 /* ImageBottomBannerView.swift */; };
 		71339B9E2C7D10DF00396422 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71339B9D2C7D10DF00396422 /* ImageDetailViewController.swift */; };
 		7178189D2C8905D800FF6694 /* CategoryListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178189C2C8905D800FF6694 /* CategoryListRouter.swift */; };
@@ -63,6 +64,10 @@
 		71C53B6C2C85379C004E6012 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C53B6B2C85379C004E6012 /* UIStackView+Extensions.swift */; };
 		71C53B6E2C8537A8004E6012 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C53B6D2C8537A8004E6012 /* UIImage+Extensions.swift */; };
 		71C53B702C853829004E6012 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C53B6F2C853829004E6012 /* TabViewController.swift */; };
+		71D5FC1F2C8A3DCD000F5146 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D5FC1E2C8A3DCD000F5146 /* BaseViewController.swift */; };
+		71D5FC222C8A4398000F5146 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D5FC212C8A4398000F5146 /* SearchBarView.swift */; };
+		71D5FC242C8A4D0E000F5146 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D5FC232C8A4D0E000F5146 /* SearchViewModel.swift */; };
+		71D5FC272C8A59DF000F5146 /* SearchListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D5FC262C8A59DF000F5146 /* SearchListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +100,7 @@
 		713027592C7FBA6400CA74F8 /* CategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
 		7130275B2C7FBE4800CA74F8 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		7130275E2C7FC48D00CA74F8 /* CategoryListTableViewViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListTableViewViewCell.swift; sourceTree = "<group>"; };
+		713084722C8E37DA005D236E /* EmptyDataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataCollectionViewCell.swift; sourceTree = "<group>"; };
 		71339B9B2C7D0CAD00396422 /* ImageBottomBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBottomBannerView.swift; sourceTree = "<group>"; };
 		71339B9D2C7D10DF00396422 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		7178189C2C8905D800FF6694 /* CategoryListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListRouter.swift; sourceTree = "<group>"; };
@@ -138,6 +144,10 @@
 		71C53B6B2C85379C004E6012 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		71C53B6D2C8537A8004E6012 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		71C53B6F2C853829004E6012 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		71D5FC1E2C8A3DCD000F5146 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		71D5FC212C8A4398000F5146 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		71D5FC232C8A4D0E000F5146 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		71D5FC262C8A59DF000F5146 /* SearchListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +223,14 @@
 				7130275E2C7FC48D00CA74F8 /* CategoryListTableViewViewCell.swift */,
 			);
 			path = CategoryList;
+			sourceTree = "<group>";
+		};
+		713084712C8E37CA005D236E /* EmptyCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				713084722C8E37DA005D236E /* EmptyDataCollectionViewCell.swift */,
+			);
+			path = EmptyCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		71339B9A2C7D0CA100396422 /* ImageBottomBannerView */ = {
@@ -304,6 +322,8 @@
 		71BF64382C753D0800A592A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				713084712C8E37CA005D236E /* EmptyCollectionViewCell */,
+				71D5FC252C8A59BC000F5146 /* Search */,
 				71C53B592C8358C1004E6012 /* ImageDetail */,
 				712873532C81203F008E1D04 /* Category */,
 				712C05E92C7E5DB000490C8C /* ZoomTransition */,
@@ -334,6 +354,7 @@
 		71BF643B2C753D2800A592A4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				71D5FC202C8A438A000F5146 /* SearchBarView */,
 				71339B9A2C7D0CA100396422 /* ImageBottomBannerView */,
 				71BF64602C77DC7900A592A4 /* ImageCardView */,
 			);
@@ -365,6 +386,7 @@
 		71BF643F2C753D9700A592A4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				71D5FC232C8A4D0E000F5146 /* SearchViewModel.swift */,
 				7130275B2C7FBE4800CA74F8 /* CategoryViewModel.swift */,
 				71BF64642C7A852600A592A4 /* HomeViewModel.swift */,
 			);
@@ -444,6 +466,7 @@
 				71BF64032C74F77B00A592A4 /* AppDelegate.swift */,
 				71BF64052C74F77B00A592A4 /* SceneDelegate.swift */,
 				71BF64112C74F77B00A592A4 /* LaunchScreen.storyboard */,
+				71D5FC1E2C8A3DCD000F5146 /* BaseViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -477,6 +500,22 @@
 				71C53B6D2C8537A8004E6012 /* UIImage+Extensions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		71D5FC202C8A438A000F5146 /* SearchBarView */ = {
+			isa = PBXGroup;
+			children = (
+				71D5FC212C8A4398000F5146 /* SearchBarView.swift */,
+			);
+			path = SearchBarView;
+			sourceTree = "<group>";
+		};
+		71D5FC252C8A59BC000F5146 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				71D5FC262C8A59DF000F5146 /* SearchListCollectionViewCell.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -629,6 +668,8 @@
 				71BF64652C7A852600A592A4 /* HomeViewModel.swift in Sources */,
 				71BF64562C77BDD100A592A4 /* UICollectionView+Extensions.swift in Sources */,
 				712C05E72C7E56C200490C8C /* ZoomTransitioner.swift in Sources */,
+				71D5FC1F2C8A3DCD000F5146 /* BaseViewController.swift in Sources */,
+				71D5FC222C8A4398000F5146 /* SearchBarView.swift in Sources */,
 				713027582C7FB6E900CA74F8 /* UIColor+Extensions.swift in Sources */,
 				712C05E82C7E56C200490C8C /* ZoomTransitionVCExtension.swift in Sources */,
 				71C53B6E2C8537A8004E6012 /* UIImage+Extensions.swift in Sources */,
@@ -636,6 +677,8 @@
 				71BF64512C77A9B400A592A4 /* PinterestLayout.swift in Sources */,
 				71BF644B2C75580D00A592A4 /* WallpaperListResponse.swift in Sources */,
 				71BF64672C7A892400A592A4 /* Observable.swift in Sources */,
+				71D5FC272C8A59DF000F5146 /* SearchListCollectionViewCell.swift in Sources */,
+				71D5FC242C8A4D0E000F5146 /* SearchViewModel.swift in Sources */,
 				71C53B652C8531F5004E6012 /* TabBarView.swift in Sources */,
 				71C53B6A2C85378C004E6012 /* UIView+Extensions.swift in Sources */,
 				71C53B5D2C851AE4004E6012 /* MainTabBarViewController.swift in Sources */,
@@ -646,6 +689,7 @@
 				71BF64492C75579B00A592A4 /* APICallerProtocol.swift in Sources */,
 				71BF644D2C75588600A592A4 /* APICaller.swift in Sources */,
 				712C05E52C7E56C200490C8C /* ZoomAnimatedTransitioning.swift in Sources */,
+				713084732C8E37DA005D236E /* EmptyDataCollectionViewCell.swift in Sources */,
 				71339B9C2C7D0CAD00396422 /* ImageBottomBannerView.swift in Sources */,
 				712C05EB2C7E62C400490C8C /* SwipeBackPresentationController.swift in Sources */,
 				71BF64622C77DC8200A592A4 /* ImageCardView.swift in Sources */,
