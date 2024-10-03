@@ -20,7 +20,8 @@ extension Theme {
     enum Color {
         static let black: UIColor = .black
         static let white: UIColor = .white
-        static let backgroundColor: UIColor = .systemBackground
+        static let backgroundColor: UIColor = .init(hexString: "0B030F")
+        static let tableViewSeparatorLineColor: UIColor = .init(hexString: "B8B42F")
     }
     
     enum borderColor {
@@ -33,6 +34,7 @@ extension Theme {
     enum AppFont {
         static let title = Font.systemFont(size: FontSize.normal, weight: FontWeight.semibold)
         static let subTitle = Font.systemFont(size: FontSize.small, weight: FontWeight.regular)
+        static let bannerTitle = Font.systemFont(size: FontSize.extraSmall, weight: FontWeight.semibold)
     }
     
     private enum Font {
@@ -52,6 +54,6 @@ extension Theme {
         static let large: CGFloat = 19.0
         static let normal: CGFloat = 16.0
         static let small: CGFloat = 13.0
-        static let extraSmall: CGFloat = 10.0
+        static let extraSmall: CGFloat = 11.0
     }
 }
