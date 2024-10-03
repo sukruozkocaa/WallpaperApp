@@ -26,6 +26,7 @@
 		7178189D2C8905D800FF6694 /* CategoryListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178189C2C8905D800FF6694 /* CategoryListRouter.swift */; };
 		7178189F2C890C4F00FF6694 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178189E2C890C4F00FF6694 /* HomeRouter.swift */; };
 		717818A12C89159800FF6694 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717818A02C89159800FF6694 /* SearchViewController.swift */; };
+		719D4A0A2CAC9EF600366C8F /* HomesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719D4A092CAC9EF600366C8F /* HomesViewModel.swift */; };
 		71A3A51E2C812FCE00C0DD15 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 71A3A51D2C812FCE00C0DD15 /* Alamofire */; };
 		71BF64042C74F77B00A592A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64032C74F77B00A592A4 /* AppDelegate.swift */; };
 		71BF64062C74F77B00A592A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF64052C74F77B00A592A4 /* SceneDelegate.swift */; };
@@ -106,6 +107,7 @@
 		7178189C2C8905D800FF6694 /* CategoryListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListRouter.swift; sourceTree = "<group>"; };
 		7178189E2C890C4F00FF6694 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		717818A02C89159800FF6694 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		719D4A092CAC9EF600366C8F /* HomesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesViewModel.swift; sourceTree = "<group>"; };
 		71BF64002C74F77B00A592A4 /* WallpaperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallpaperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71BF64032C74F77B00A592A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71BF64052C74F77B00A592A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				71D5FC232C8A4D0E000F5146 /* SearchViewModel.swift */,
 				7130275B2C7FBE4800CA74F8 /* CategoryViewModel.swift */,
 				71BF64642C7A852600A592A4 /* HomeViewModel.swift */,
+				719D4A092CAC9EF600366C8F /* HomesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				712C05EB2C7E62C400490C8C /* SwipeBackPresentationController.swift in Sources */,
 				71BF64622C77DC8200A592A4 /* ImageCardView.swift in Sources */,
 				71BF645A2C77BED300A592A4 /* ImageListCollectionViewCell.swift in Sources */,
+				719D4A0A2CAC9EF600366C8F /* HomesViewModel.swift in Sources */,
 				712873562C81210E008E1D04 /* CategoryDetailCollectionViewCell.swift in Sources */,
 				712873522C8116BE008E1D04 /* CategoryDetailDataModel.swift in Sources */,
 				7130275C2C7FBE4800CA74F8 /* CategoryViewModel.swift in Sources */,

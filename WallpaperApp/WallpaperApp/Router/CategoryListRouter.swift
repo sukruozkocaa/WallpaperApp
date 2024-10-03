@@ -18,7 +18,6 @@ class CategoryListRouter: CategoryListRouterProtocol {
         let homeViewModel = HomeViewModel()
         let router = HomeRouter()
         let homeVC = HomeViewController(categoryId: categoryId, viewModel: homeViewModel, router: router)
-        homeVC.categoryId = categoryId
         homeVC.navigationItem.title = categoryName
         viewController.navigationController?.pushViewController(homeVC, animated: true)
     }
