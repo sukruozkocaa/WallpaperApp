@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - APICallerProtocol
 protocol APICallerProtocol {
     func apiCallerForSearch(searchText: String?, nextPageURL: String?, completion: @escaping (Result<PexelsResponse, Error>) -> Void)
     func apiCallerCategoryList(nextPageURL: String?, completion: @escaping (Result<CategoryListDataModel, Error>) -> Void)
