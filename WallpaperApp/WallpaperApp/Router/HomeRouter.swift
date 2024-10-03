@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-protocol HomeRouterProtocol: AnyObject {
+protocol CategoryDetailRouterProtocol: AnyObject {
     func navigateToPopViewController(from viewController: UIViewController)
     func navigateToImageDetail(from viewController: UIViewController, imageView: UIImageView)
 }
 
-class HomeRouter: HomeRouterProtocol {
+class CategoryDetailRouter: CategoryDetailRouterProtocol {
     func navigateToPopViewController(from viewController: UIViewController) {
         viewController.navigationController?.popViewController(animated: true)
     }

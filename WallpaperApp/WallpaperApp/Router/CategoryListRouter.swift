@@ -15,9 +15,7 @@ protocol CategoryListRouterProtocol: AnyObject {
 
 class CategoryListRouter: CategoryListRouterProtocol {
     func navigateToHomeViewController(from viewController: UIViewController, with categoryId: String?, categoryName: String?) {
-        let homeViewModel = HomeViewModel()
-        let router = HomeRouter()
-        let homeVC = HomeViewController(categoryId: categoryId, viewModel: homeViewModel, router: router)
+        let homeVC = CategoryDetailViewController(categoryId: categoryId ?? "")
         homeVC.navigationItem.title = categoryName
         viewController.navigationController?.pushViewController(homeVC, animated: true)
     }

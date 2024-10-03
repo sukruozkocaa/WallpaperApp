@@ -10,7 +10,7 @@ import XCTest
 
 final class WallpaperAppTests: XCTestCase {
 
-    private var viewModel: HomeViewModel!
+    private var viewModel: CategoryDetailViewModel!
     
     override class func setUp() {
         super.setUp()
