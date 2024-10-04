@@ -2,13 +2,13 @@
 //  CategoryListViewController.swift
 //  WallpaperApp
 //
-//  Created by Şükrü on 28.08.2024.
+//  Created by Şükrü on 5.10.2024.
 //
 
 import UIKit
 
 // MARK: - CategoryListViewController
-final class CategoryListViewController: BaseViewController {
+final class CategoryListViewController: ViewController<CategoryListViewModel> {
 
     // MARK: - Views
     private lazy var tableView: UITableView = {
@@ -23,60 +23,40 @@ final class CategoryListViewController: BaseViewController {
         tableView.register(cell: CategoryListTableViewViewCell.self)
         return tableView
     }()
-
-    // MARK: - Variables
-    private var viewModel: CategoryViewModelProtocol
-    private let router: CategoryListRouterProtocol
-    var storedOffsets = [Int: CGFloat]()
-
+    
     // MARK: - Constants
     private let cellHeight: CGFloat = 300.0
     private let tableViewSeparatorLineHeight: CGFloat = 0.5
-    
-    // MARK: - Life Cycles
-    init(viewModel: CategoryViewModelProtocol = CategoryViewModel(), router: CategoryListRouterProtocol = CategoryListRouter()) {
-        self.viewModel = viewModel
+    private let router: CategoryListRouterProtocol
+
+    init(viewModel: CategoryListViewModelProtocol = CategoryListViewModel(), router: CategoryListRouterProtocol) {
         self.router = router
-        super.init(nibName: nil, bundle: nil)
+        super.init(viewModel: CategoryListViewModel())
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
-        viewModel.loadCategoryList()
-        bindViewModel()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
+        setupUI()
+        viewModel.viewDidLoad(from: self)
     }
 }
 
-// MARK: - Bind ViewModel
+// MARK: - Setup UI
 private extension CategoryListViewController {
-    final func bindViewModel() {
-        viewModel.reloadHandler = { [weak self] in
-            guard let self else { return }
-            tableView.reloadData()
-        }
-    }
-}
-
-// MARK: - Setup Views
-private extension CategoryListViewController {
-    final func setupViews() {
-        view.backgroundColor = Theme.Color.backgroundColor
+    final func setupUI() {
+        setupViewUI()
         setupTableView()
     }
-
+    
+    final func setupViewUI() {
+        view.backgroundColor = Theme.Color.backgroundColor
+    }
+    
     final func setupTableView() {
         view.addSubview(tableView)
         
@@ -88,10 +68,10 @@ private extension CategoryListViewController {
     }
 }
 
-// MARK: - UITableViewDelegate & UITableViewDataSource
-extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - UITableViewDataSource
+extension CategoryListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.categoryList.value?.collections?.count ?? 0
+        return viewModel.categoryListResponseItems.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,16 +79,16 @@ extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let item = viewModel.categoryList.value?.collections?[indexPath.section] else {
-            return UITableViewCell()
-        }
-        
+        let item = viewModel.categoryListResponseItems[indexPath.section]
         let cell = tableView.dequeueReusableCell(for: CategoryListTableViewViewCell.self, for: indexPath)
         cell.configure(item: item)
         cell.delegate = self
         return cell
     }
-    
+}
+
+// MARK: - UITableViewDelegate
+extension CategoryListViewController: UITableViewDelegate {    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard section != .zero else { return nil }
         let separatorLineView = UIView(frame: CGRect(
@@ -127,24 +107,34 @@ extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let collectionsCount = viewModel.categoryList.value?.collections?.count,
-                 indexPath.section == collectionsCount - 2 else { return }
-
-        viewModel.loadCategoryList()
+        if indexPath.section == viewModel.categoryListResponseItems.count - 2 {
+            viewModel.nextPage()
+        }
     }
 }
 
-// MARK: - CategoryListTableViewViewCellDelegate
+// MARK: -
+extension CategoryListViewController: CategoryListViewModelOutputProtocol {
+    func categoryListViewModelOutputProtocol(reloadData: Any) {
+        tableView.reloadData()
+    }
+    
+    func categoryListViewModelOutputProtocol(loadData: CategoryListDataModel?) {
+        tableView.reloadData()
+    }
+    
+    func categoryListViewModelOutputProtocol(showProgressView: Bool) {
+        showProgressView ? self.showProgressView() : self.hideProgressView()
+    }
+}
+
+// MARK: -
 extension CategoryListViewController: CategoryListTableViewViewCellDelegate {
-    func categoryListTableViewViewCell(_ cell: CategoryListTableViewViewCell, _ categoryId: String?) {
-        router.navigateToHomeViewController(from: self, with: categoryId, categoryName: nil)
+    func categoryListTableViewViewCell(_ cell: CategoryListTableViewViewCell, _ categoryId: String?, _ categoryName: String) {
+        router.navigateToHomeViewController(from: self, with: categoryId, categoryName: categoryName)
     }
     
     func categoryListTableViewViewCell(_ cell: CategoryListTableViewViewCell, _ onTapImageView: UIImageView) {
         router.navigateToImageDetail(from: self, imageView: onTapImageView)
-    }
-    
-    func categoryListTableViewViewCell(_ cell: CategoryListTableViewViewCell, _ categoryId: String?, _ categoryName: String) {
-        router.navigateToHomeViewController(from: self, with: categoryId, categoryName: categoryName)
     }
 }

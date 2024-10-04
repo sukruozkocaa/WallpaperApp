@@ -7,16 +7,12 @@
 
 import Foundation
 
-// MARK: - ViewModel
-public protocol ViewModel {
-    var showErrorMessage: ((_ errorMessage: String)->Void)? { get set }
-    var dismissErrorMessage: (()->Void)? { get set }
-}
-
+// MARK: - CategoryDetailViewModelProtocol
 protocol CategoryDetailViewModelProtocol: AnyObject, ViewModel {
 //    func viewDidLoad(from output: HomesViewModelOutputProtocol)
 }
 
+// MARK: - CategoryDetailViewModelOutputProtocol
 protocol CategoryDetailViewModelOutputProtocol: AnyObject {
     func homeViewModelOutputProtocol(loadData: CategoryDetailDataModel?)
     func homeViewModelOutputProtocol(showProgressView: Bool)

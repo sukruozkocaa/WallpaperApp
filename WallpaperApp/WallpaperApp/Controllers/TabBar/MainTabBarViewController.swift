@@ -13,8 +13,8 @@ final class MainTabBarViewController: TabViewController {
     // MARK: - ViewControllers
     private lazy var homeVC: UIViewController = {
         let homeTabItem = UITabBarItem(title: "Home", image: UIImage(named: "ic_home"), selectedImage: nil)
-        let viewModel = CategoryViewModel(apiCaller: APICaller())
-        let homeNavTab = NavigationController(rootViewController: CategoryListViewController(viewModel: viewModel))
+        let vm = CategoryListViewModel(apiCaller: APICaller())
+        let homeNavTab = NavigationController(rootViewController: CategoryListViewController(viewModel: vm, router: CategoryListRouter()))
         homeNavTab.tabBarItem = homeTabItem
         return homeNavTab
     }()
@@ -29,8 +29,11 @@ final class MainTabBarViewController: TabViewController {
     
     private lazy var profileVC: UIViewController = {
         let homeTabItem = UITabBarItem(title: "Profile", image: UIImage(named: "ic_man"), selectedImage: nil)
-        let viewModel = CategoryViewModel()
-        let homeNavTab = NavigationController(rootViewController: CategoryListViewController(viewModel: viewModel))
+        let vm = CategoryListViewModel(apiCaller: APICaller())
+        let homeNavTab = NavigationController(rootViewController: CategoryListViewController(
+            viewModel: vm, 
+            router: CategoryListRouter())
+        )
         homeNavTab.tabBarItem = homeTabItem
         
         return homeNavTab
@@ -38,8 +41,11 @@ final class MainTabBarViewController: TabViewController {
     
     lazy var moreTab: UIViewController = {
         let commentTabItem = UITabBarItem(title: "More", image: UIImage(named: "ic_wheel"), selectedImage: nil)
-        let viewModel = CategoryViewModel()
-        let navController = NavigationController(rootViewController: CategoryListViewController(viewModel: viewModel))
+        let vm = CategoryListViewModel(apiCaller: APICaller())
+        let navController = NavigationController(rootViewController: CategoryListViewController(
+            viewModel: vm,
+            router: CategoryListRouter())
+        )
         navController.tabBarItem = commentTabItem
         return navController
     }()
