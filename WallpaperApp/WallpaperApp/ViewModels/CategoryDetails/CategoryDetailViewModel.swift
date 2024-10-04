@@ -47,7 +47,7 @@ extension CategoryDetailViewModel {
         self.categoryId = categoryId
         delegate = output
         
-        delegate?.homeViewModelOutputProtocol(showProgressView: true)
+        delegate?.categoryDetailViewModelOutputProtocol(showProgressView: true)
         requestCategoryDetails()
     }
     
@@ -115,8 +115,8 @@ private extension CategoryDetailViewModel {
     }
     
     final func handleCollectionViewConfigure() {
-        delegate?.homeViewModelOutputProtocol(loadData: categoryDetail)
-        delegate?.homeViewModelOutputProtocol(showProgressView: false)
+        delegate?.categoryDetailViewModelOutputProtocol(loadData: categoryDetail)
+        delegate?.categoryDetailViewModelOutputProtocol(showProgressView: false)
     }
 }
 

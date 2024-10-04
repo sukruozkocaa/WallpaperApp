@@ -134,11 +134,11 @@ extension CategoryDetailViewController: PinterestLayoutDelegate {
 
 // MARK: - HomesViewModelOutputProtocol
 extension CategoryDetailViewController: CategoryDetailViewModelOutputProtocol {
-    func homeViewModelOutputProtocol(showProgressView: Bool) {
+    func categoryDetailViewModelOutputProtocol(showProgressView: Bool) {
         showProgressView == true ? self.showProgressView() : self.hideProgressView()
     }
     
-    func homeViewModelOutputProtocol(loadData: CategoryDetailDataModel?) {
+    func categoryDetailViewModelOutputProtocol(loadData: CategoryDetailDataModel?) {
         refreshController.endRefreshing()
         collectionView.reloadData()
     }

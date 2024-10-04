@@ -14,6 +14,6 @@ protocol CategoryDetailViewModelProtocol: AnyObject, ViewModel {
 
 // MARK: - CategoryDetailViewModelOutputProtocol
 protocol CategoryDetailViewModelOutputProtocol: AnyObject {
-    func homeViewModelOutputProtocol(loadData: CategoryDetailDataModel?)
-    func homeViewModelOutputProtocol(showProgressView: Bool)
+    func categoryDetailViewModelOutputProtocol(loadData: CategoryDetailDataModel?)
+    func categoryDetailViewModelOutputProtocol(showProgressView: Bool)
 }
